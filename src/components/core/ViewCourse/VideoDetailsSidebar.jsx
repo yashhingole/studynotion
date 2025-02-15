@@ -122,9 +122,22 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
                   ))}
                 </div>
               )}
+
+              {/* <button className="bg-red"> Test </button> */}
+
+              <div className=" bottom-0">
+
+                  <IconBtn
+                  text="Get Certificate"
+                  customClasses="mx-auto"
+                  />
+
+              </div>
+
             </div>
           ))}
         </div>
+
       </div>
     </>
   )

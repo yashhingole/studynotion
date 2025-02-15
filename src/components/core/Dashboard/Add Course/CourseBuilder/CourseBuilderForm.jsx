@@ -147,6 +147,58 @@ export default function CourseBuilderForm() {
       {course.courseContent.length > 0 && (
         <NestedView handleChangeEditSectionName={handleChangeEditSectionName} />
       )}
+
+      {/* Test Section */}
+
+
+      {/* <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <div className="flex flex-col space-y-2">
+          <label className="text-sm text-richblack-5" htmlFor="sectionName">
+            Test Section <sup className="text-pink-200">*</sup>
+          </label>
+          <input
+            id="sectionName"
+            disabled={loading}
+            placeholder="Add Course Name"
+            {...register("sectionName", { required: true })}
+            // className="form-style w-full"
+            style={{
+              boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+            }}
+            className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5"
+          />
+          {errors.sectionName && (
+            <span className="ml-2 text-xs tracking-wide text-pink-200">
+              Section name is required
+            </span>
+          )}
+        </div>
+        <div className="flex items-end gap-x-4">
+          <IconBtn
+            type="submit"
+            disabled={loading}
+            text={editSectionName ? "Edit Section Name" : "Create Section"}
+            outline={true}
+          >
+            <IoAddCircleOutline size={20} className="text-yellow-50" />
+          </IconBtn>
+          {editSectionName && (
+            <button
+              type="button"
+              onClick={cancelEdit}
+              className="text-sm text-richblack-300 underline"
+            >
+              Cancel Edit
+            </button>
+          )}
+        </div>
+      </form>
+      {course.courseContent.length > 0 && (
+        <NestedView handleChangeEditSectionName={handleChangeEditSectionName} />
+      )} */}
+
+
+
       {/* Next Prev Button */}
       <div className="flex justify-end gap-x-3">
         <button

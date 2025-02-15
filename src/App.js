@@ -1,21 +1,21 @@
 import "./App.css";
-import {Route, Routes } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux"
-import Home from "./pages/Home"
-import Navbar from "./components/common/Navbar"
-import OpenRoute from "./components/core/Auth/OpenRoute"
+import { Route, Routes } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Home from "./pages/Home";
+import Navbar from "./components/common/Navbar";
+import OpenRoute from "./components/core/Auth/OpenRoute";
 import PrivateRoute from "./components/core/Auth/PrivateRoute";
-import Login from "./pages/Login"
-import Signup from "./pages/Signup"
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
 import UpdatePassword from "./pages/UpdatePassword";
 import VerifyEmail from "./pages/VerifyEmail";
-import About from "./pages/About"
+import About from "./pages/About";
 import Contact from "./pages/Contact";
 import MyProfile from "./components/core/Dashboard/MyProfile";
-import Dashboard from "./pages/Dashboard"
+import Dashboard from "./pages/Dashboard";
 import Error from "./pages/Error";
-import Settings from "./components/core/Dashboard/Settings"
+import Settings from "./components/core/Dashboard/Settings";
 import EnrolledCourses from "./components/core/Dashboard/EntrolledCourses";
 import Cart from "./components/core/Dashboard/Cart";
 import { ACCOUNT_TYPE } from "./utils/constants";
@@ -24,21 +24,24 @@ import AddCourse from "./components/core/Dashboard/Add Course";
 import EditCourse from "./components/core/Dashboard/EditCourse";
 import CourseDetails from "./pages/CourseDetails";
 import Catalog from "./pages/Catalog";
-import ViewCourse from "./pages/ViewCourse"
-import VideoDetails from "./components/core/ViewCourse/VideoDetails"
+import ViewCourse from "./pages/ViewCourse";
+import VideoDetails from "./components/core/ViewCourse/VideoDetails";
 import Instructor from "./components/core/Dashboard/InstructorDashboard/Instructor";
+import Certificate from "./pages/Certificate";
+import Chatbot from "./components/core/Chatbot/Chatbot";
 
 function App() {
-  const { user } = useSelector((state) => state.profile)
+  const { user } = useSelector((state) => state.profile);
   return (
-   <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
-    <Navbar/>
-    <Routes>
-      <Route path="/" element={<Home/>} />
-      <Route path="catalog/:catalogName" element={<Catalog/>} />
-      <Route path="courses/:courseId" element={<CourseDetails/>} />
-      <Route path="/contact" element={<Contact />} />
-      <Route
+    <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="catalog/:catalogName" element={<Catalog />} />
+        <Route path="courses/:courseId" element={<CourseDetails />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/certificate" element={<Certificate />} />
+        <Route
           path="signup"
           element={
             <OpenRoute>
@@ -46,7 +49,7 @@ function App() {
             </OpenRoute>
           }
         />
-    <Route
+        <Route
           path="login"
           element={
             <OpenRoute>
@@ -54,59 +57,46 @@ function App() {
             </OpenRoute>
           }
         />
-    <Route
+        <Route
           path="forgot-password"
           element={
             <OpenRoute>
-              <ForgotPassword/>
+              <ForgotPassword />
             </OpenRoute>
           }
         />
-    <Route
+        <Route
           path="update-password/:id"
           element={
             <OpenRoute>
-              <UpdatePassword/>
+              <UpdatePassword />
             </OpenRoute>
           }
         />
-    <Route
+        <Route
           path="verify-email"
           element={
             <OpenRoute>
-              <VerifyEmail/>
+              <VerifyEmail />
             </OpenRoute>
           }
         />
-    <Route
-          path="/about"
-          element={
-            
-              <About/>
-            
-          }
-        />
-    <Route
-          path="/contact"
-          element={
-            
-              < Contact/>
-            
-          }
-        />
-    <Route
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/chatbot" element={<Chatbot />} />
+        <Route
           // path="contact"
           element={
             <PrivateRoute>
-              < Dashboard/>
+              <Dashboard />
             </PrivateRoute>
           }
-    >
-    <Route path="dashboard/my-profile" element={<MyProfile />} />
-    <Route path="dashboard/Settings" element={<Settings />} />
-    <Route path="dashboard/my-course" element={<MyCourses />} />
+        >
+          <Route path="dashboard/my-profile" element={<MyProfile />} />
+          <Route path="dashboard/Settings" element={<Settings />} />
+          <Route path="dashboard/my-course" element={<MyCourses />} />
 
-    {user?.accountType === ACCOUNT_TYPE.STUDENT && (
+          {user?.accountType === ACCOUNT_TYPE.STUDENT && (
             <>
               <Route
                 path="dashboard/enrolled-courses"
@@ -115,27 +105,26 @@ function App() {
               <Route path="/dashboard/cart" element={<Cart />} />
               <Route path="/dashboard/purchase-history" element={<Cart />} />
             </>
-    )}
+          )}
 
-    {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+          {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
             <>
-              <Route path="dashboard/instructor" element={<Instructor/>} />
-              <Route path="dashboard/add-course" element={<AddCourse/>} />
+              <Route path="dashboard/instructor" element={<Instructor />} />
+              <Route path="dashboard/add-course" element={<AddCourse />} />
               <Route path="dashboard/my-courses" element={<MyCourses />} />
               <Route
                 path="dashboard/edit-course/:courseId"
-                element={<EditCourse />} 
+                element={<EditCourse />}
               />
             </>
           )}
+        </Route>
 
-    </Route>
-
-    {/* For the watching course lectures */}
-    <Route
+        {/* For the watching course lectures */}
+        <Route
           element={
             <PrivateRoute>
-              <ViewCourse/>
+              <ViewCourse />
             </PrivateRoute>
           }
         >
@@ -143,16 +132,15 @@ function App() {
             <>
               <Route
                 path="view-course/:courseId/section/:sectionId/sub-section/:subSectionId"
-                element={<VideoDetails/>}
+                element={<VideoDetails />}
               />
             </>
           )}
-    </Route>
+        </Route>
 
-    <Route path="*" element={<Error />} />
-    </Routes>
-
-   </div>
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </div>
   );
 }
 
