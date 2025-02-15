@@ -4,10 +4,13 @@ import HighlightText from "../../../components/core/HomePage/HighlightText";
 import { CgSearchLoading } from "react-icons/cg";
 import Spinner from "../../../assets/Images/spinner.gif";
 
+
 const Chatbot = () => {
   const [question, setQuestion] = useState(""); 
   const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const key = process.env.REACT_APP_GEMINI_API_KEY
 
   // Function to format the response text
   const formatResponse = (text) => {
@@ -30,7 +33,7 @@ const Chatbot = () => {
 
     try {
       const res = await axios.post(
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyBaGBm-KHyf6jsvXOeoB4YgjYePp6jCLrw",
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`,
         {
           contents: [{ parts: [{ text: question }] }],
         }
