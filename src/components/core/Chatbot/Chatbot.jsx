@@ -50,10 +50,14 @@ const Chatbot = () => {
 
   return (
     <div className="text-white">
-      <div className="text-center text-4xl font-semibold mt-7">
+      <div 
+      className="text-center text-4xl font-semibold mt-7"
+      >
         Ask Your Doubts to Our <HighlightText text={"Intelligent Search"} />
       </div>
-      <div className="d-flex justify-content-center align-items-center vh-100 mt-10">
+      <div 
+      className="d-flex justify-content-center align-items-center vh-100 mt-10"
+      >
         <div className="d-flex flex-row align-items-center text-center">
           <textarea
             value={question}
@@ -78,7 +82,9 @@ const Chatbot = () => {
 
       {/* Show spinner while loading */}
       {loading ? (
-        <div className="d-flex justify-content-center align-items-center mt-5" style={{display:"flex", justifyContent:'center', margin: "center", marginTop: '10rem'}}>
+        <div 
+        className="d-flex justify-content-center align-items-center mt-5" style={{display:"flex", justifyContent:'center', margin: "center", marginTop: '10rem'}}
+        >
           <img src={Spinner} alt="Loading..." width={30} height={30} />
         </div>
       ) : (
